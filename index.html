@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+#map {
+    position: fixed;
+    width:50%;
+}
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: Tw Cen MT;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 20px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+}
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='Welcome' class='active'>
+        <h3>Hey, there!</h3>
+        <p>I'm Rachel, and you've found my resu-map! Take a look around!.</p>
+    </section>
+    <section id='Hometown' class='active'>
+        <h3>Home</h3>
+        <p>Raised in New Hampshire, I grew up roaming the outdoors- in my neighborhood, and in the epic peaks of the White Mountains.
+    </section>
+    <section id='Villanova University'>
+        <h3>Villanova University</h3>
+        <p>After high school, I was ready for a change of scenery, and decided to journey to Villanova, PA for my undergrad. </p>
+    </section>
+    <section id='YPHTC'>
+        <h3>Young Parent and Healthy Teen Center</h3>
+        <p>I traveled to Juneau, AK to complete a service year with Jesuit Volunteer Corps Northwest.</p>
+    </section>
+    <section id='AT'>
+        <h3>A Long Walk</h3>
+        <p>I hiked the Appalachian Trail!</p>
+    </section>
+    <section id='YMCA'>
+        <h3>YMCA Bold and Gold</h3>
+        <p>Backpacked around the Olympic Peninsula and shared the outdoors with youth!</p>
+    </section>
+    <section id='PDX'>
+        <h3>Portland</h3>
+        <p>Who knows what's next!</p>
+    </section>
+    <section id='Thanks'>
+        <h3>See ya!</h3>
+        <p>Thanks for reading my resumap!</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    </section>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoicmFjaGVsdHlvdW5nIiwiYSI6ImNqOWE4ZjQwaTEwOWQyd2xzZnMzamJ6MmQifQ.taPEdLDGi_VN2Z7GYLmZlw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/racheltyoung/cj9a8gwov00w02rmyg4uvs5le',
+        bearing: -0,
+        center: [-96.147346, 39.743500],
+        zoom: 3.34,
+        speed: 0.8,
+        pitch: 0
+});
+var chapters = {
+    'Welcome': {
+        bearing: -0,
+        center: [-96.147346, 39.743500],
+        zoom: 3.34,
+        speed: 0.8,
+        pitch: 50
+    },
+    'Hometown': {
+        bearing: -0,
+        center: [-71.462759, 42.745012],
+        zoom: 13.66,
+        pitch: 45
+    },
+    'Villanova University': {
+        center: [-75.341555, 40.037126],
+        bearing: -0,
+        zoom: 16.14,
+        speed: 0.6,
+        pitch: 45
+    },
+    'YPHTC': {
+        bearing: -0,
+        center: [-134.415803, 58.302136],
+        zoom: 13.81,
+        speed: 0.6,
+        pitch: 50
+    },
+    'AT': {
+        bearing: 00,
+        center: [-77.463886, 39.037581],
+        zoom: 4.95,
+        speed: 0.6,
+        pitch: 50
+    },
+    'YMCA': {
+        bearing: 0,
+        center: [-122.327022, 47.619474],
+        zoom: 13.48,
+        pitch: 50,
+        speed: 0.6
+    },
+    'PDX': {
+        bearing: 0,
+        center: [-122.674927, 45.546292],
+        zoom: 14.20,
+        pitch: 50,
+        speed: 0.6
+    },
+    'Thanks': {
+        bearing: -0,
+        center: [-96.147346, 39.743500],
+        zoom: 3.34,
+        speed: 0.8,
+        pitch: 0
+    }
+    
+};
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+var activeChapterName = 'baker';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+    map.flyTo(chapters[chapterName]);
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+    activeChapterName = chapterName;
+}
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+</script>
+
+</body>
+</html>
