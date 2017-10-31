@@ -45,23 +45,19 @@ section:last-child {
 <div id='features'>
     <section id='Welcome' class='active'>
         <h3>Hey, there!</h3>
-        <p>I'm Rachel, and you've found my lifemap! I like to think about how my interactions with my community and environment affect my sense of place and belonging. I decided to create this map to document and reflect upon my experiences, learn some code, and to share my ideas with other people. Have a look around!
-        <br>
+        <p>I'm Rachel, and you've found my lifemap! I like to think about how my interactions with my community and environment affect my sense of place and belonging. Resumes only say so much, so I decided to create this map to fill in the gaps, as well as learn some code, and share my ideas with other people. Have a look around!
+        <br><br>
         Scroll down the right column to fly to the map that corresponds with each blurb. </p>
     </section>
     <section id='Hometown' class='active'>
-        <h3>Home</h3>
-        <br>
+        <h3>Hometown</h3>
         <h4>Nashua, NH</h4>
-        <p>Raised in New England, I grew up with a penchant for fresh air, Maine lobster, and Boston sports. My parents passed to me their love of learning, music, and gourmet food. During high school, I was involved in the music and athletic community as a middle hitter for the Nashua High School women's vollyball team, and as a member of the concert and marching band, where I played clarinet and trumpet. 
+        <p>Raised in New England, I grew up with a penchant for fresh air, Maine lobster, and Boston sports teams. My parents passed to me their love of learning, music, and gourmet food. During high school, I was involved in the music and athletic community as a middle hitter for the Nashua High School women's vollyball team, and as a member of the concert and marching band, where I played clarinet and trumpet. </p>
     </section>
     <section id='Villanova University'>
-        <h3>Villanova University</h3>
-        <p>After high school, I was ready for a change of scenery, and decided to journey to Villanova, PA for my undergrad. </p>
-    </section>
-    <section id='Galway'>
-        <h3>Galway, Ireland</h3>
-        <p>I studied abroad in Ireland and practiced my accent! </p>
+        <h3>Undergraduate Studies</h3>
+        <h4>Villanova University- Villanova, PA</h4>
+        <p>Inclined to wander a bit further from home for my undergrad, I enrolled at Villanova University, just outside of Philadelphia. I earned a degree in biochemistry while also embracing the "mind, body, spirit" philosophy of well-roundedness that accompanies a Catholic education. I began to explore ideas around social justice and joined a community of people on campus active in community service and social advocacy. I tutorered and mentored students at an under-privleged high school in West Philadelphia,participated in multiple habitat for humanity projects, organized campus-wide service days, and generally surrounded myself with people who wanted to work to make our communities more just. what I had learned and witnessed in 4 years roacked my world, and I was ready for more.  </p>
     </section>
     <section id='YPHTC'>
         <h3>Young Parent and Healthy Teen Center</h3>
@@ -82,6 +78,10 @@ section:last-child {
     <section id='Thanks'>
         <h3>See ya!</h3>
         <p>Thanks for reading my resumap!</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    </section>
+    <section id='Galway'>
+        <h3>Galway, Ireland</h3>
+        <p>I studied abroad in Ireland and practiced my accent! </p>
     </section>
 </div>
 <script>
@@ -115,13 +115,6 @@ var chapters = {
         zoom: 16.14,
         speed: 0.6,
         pitch: 45
-    },
-    'Galway': {
-        center: [-9.061323, 53.277030],
-        bearing: -0,
-        zoom: 14.47,
-        speed: 0.6,
-        pitch: 50
     },
     'YPHTC': {
         bearing: -0,
@@ -157,8 +150,14 @@ var chapters = {
         zoom: 3.34,
         speed: 0.8,
         pitch: 50
+    },
+    'Galway': {
+        center: [-9.061323, 53.277030],
+        bearing: -0,
+        zoom: 14.47,
+        speed: 0.6,
+        pitch: 50
     }
-    
 };
 // On every scroll event, check which element is on screen
 window.onscroll = function() {
